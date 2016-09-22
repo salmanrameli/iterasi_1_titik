@@ -81,7 +81,9 @@ int main()
 	
 	angka[1] = angka[1]*-1;
 	
-	char lanjut = 'y';
+	char lanjut = 'y'; //variabel menyimpan pilihan user untuk melanjutkan perhitungan atau tidak
+	int iterasi = 0;
+	float error_true;
 	
 	while(lanjut != 'n')
 	{
@@ -89,9 +91,22 @@ int main()
 		
 		//printf("%f x %f - %f\n", angka[0], pow(x0, 2), angka[1]);
 		printf("X%d = %f\n", i+1, jawaban);
+		error_true = ((sebenarnya * 1.0) - jawaban) / sebenarnya;
+		if(error_true < 0)
+		{
+			error_true = error_true * -1;
+		}
+		printf("error true: %f\n", error_true*100);
+//		if(iterasi > 0)
+//		{
+//			
+//		}
 		x0 = jawaban;
+		//iterasi++;
 		//printf("nilai x0 sekarang: %f\n", x0);
+		
 		getchar();
+		
 		printf("lanjut? y/n: ");
 		scanf("%c", &lanjut);
 		if(lanjut == 'n')
