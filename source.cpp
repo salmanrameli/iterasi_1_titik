@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <math.h>
+
+using namespace std;
 
 int main()
 {
@@ -6,9 +9,9 @@ int main()
 	float angka[3]; //array menyimpan angka persamaan
 	float kiri; //variabel menyimpan angka yang dipindah ke kiri persamaan
 	float pindah; //variabel menyimpan angka yang dipilih untuk dipindah ke kiri
-	//char operatr[2]; //array menyimpan operator
-	int x0; //variabel menyimpan nilai X0
+	float x0; //variabel menyimpan nilai X0
 	int sebenarnya; //variabel menyimpan kunci jawaban
+	float jawaban; //variabel menyimpan jawaban hasil perhitungan
 	
 	printf("masukkan angka-angka persamaan: ");
 	for(i=0;i<3;i++)
@@ -17,7 +20,7 @@ int main()
 	}
 	
 	printf("masukkan nilai X0: ");
-	scanf("%d", &x0);
+	scanf("%f", &x0);
 	
 	printf("masukkan nilai sebenarnya: ");
 	scanf("%d", &sebenarnya);
@@ -55,21 +58,37 @@ int main()
 //		angka[2] = 0;
 //	}
 
+	//menyesuaikan tanda positif/negatif angka saat dipindahkan ke kiri persamaan
 	kiri = angka[1]*-1;
 		
 	//indeks array setelah indeks ke-1 digeser 1 ke kiri
 	angka[1] = angka[2];
 	angka[2] = 0;
 	
-	//untuk debugging
-	printf("angka di kiri: %f\n", kiri);
-	printf("persamaan sekarang: ");
+	//membagi persamaan dengan variabel kiri
 	for(i=0;i<2;i++)
 	{
-		printf("%f", angka[i]);
+		angka[i] = angka[i]/kiri;
 	}
-
+		
+	//untuk debugging
+//	printf("angka di kiri: %f\n", kiri);
+//	printf("persamaan sekarang: ");
+//	for(i=0;i<2;i++)
+//	{
+//		printf("%f", angka[i]);
+//	}
 	
+	angka[1] = angka[1]*-1;
+	
+	for(i=0;i<3;i++)
+	{
+		jawaban = (angka[0] * (x0 * x0)) - angka[1];
+		printf("%f x %f - %f\n", angka[0], pow(x0, 2), angka[1]);
+		printf("X%d = %f\n", i+1, jawaban);
+		x0 = jawaban;
+		printf("nilai x0 sekarang: %f\n", x0);
+	}
 	
 	return 0;
 }
