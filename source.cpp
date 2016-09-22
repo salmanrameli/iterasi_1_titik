@@ -81,13 +81,23 @@ int main()
 	
 	angka[1] = angka[1]*-1;
 	
-	for(i=0;i<3;i++)
+	char lanjut = 'y';
+	
+	while(lanjut != 'n')
 	{
 		jawaban = (angka[0] * (x0 * x0)) - angka[1];
-		printf("%f x %f - %f\n", angka[0], pow(x0, 2), angka[1]);
+		
+		//printf("%f x %f - %f\n", angka[0], pow(x0, 2), angka[1]);
 		printf("X%d = %f\n", i+1, jawaban);
 		x0 = jawaban;
-		printf("nilai x0 sekarang: %f\n", x0);
+		//printf("nilai x0 sekarang: %f\n", x0);
+		getchar();
+		printf("lanjut? y/n: ");
+		scanf("%c", &lanjut);
+		if(lanjut == 'n')
+		{
+			break;
+		}
 	}
 	
 	return 0;
