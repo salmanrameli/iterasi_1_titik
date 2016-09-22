@@ -44,16 +44,16 @@ int main()
 	scanf("%d", &pindah);
 	
 	//jika angka yang dipindahkan berada di indeks ke-0 array
-	if(pindah == angka[0])
-	{
-		kiri = angka[0]*-1;
-		
-		//indeks array setelah indeks ke-0 digeser 1 ke kiri
-		angka[0] = angka[1];
-		angka[1] = angka[2];
-		angka[2] = 0;
-	}
-	else if(pindah == angka[1]) //jika angka yang dipindahkan berada di indeks ke-1 array
+//	if(pindah == angka[0])
+//	{
+//		kiri = angka[0]*-1;
+//		
+//		//indeks array setelah indeks ke-0 digeser 1 ke kiri
+//		angka[0] = angka[1];
+//		angka[1] = angka[2];
+//		angka[2] = 0;
+//	}
+	if(pindah == angka[1]) //jika angka yang dipindahkan berada di indeks ke-1 array
 	{
 		kiri = angka[1]*-1;
 		
