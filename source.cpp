@@ -24,39 +24,6 @@ int main()
 	
 	printf("masukkan nilai sebenarnya: ");
 	scanf("%d", &sebenarnya);
-	
-	//untuk debugging
-//	printf("persamaan: %dX^2", angka[0]);
-//	if(angka[1] < 0)
-//	{
-//		printf(" - %dX", angka[1]*-1);
-//	}
-//	if(angka[1] > 0)
-//	{
-//		printf(" + %dX", angka[1]);
-//	}
-//	if(angka[2] < 0)
-//	{
-//		printf(" - %d\n", angka[2]*-1);
-//	}
-//	if(angka[2] > 0)
-//	{
-//		printf(" + %d\n", angka[2]);
-//	}
-	
-//	printf("masukkan angka yang dipindahkan ke kiri: ");
-//	scanf("%f", &pindah);
-	
-	//jika angka yang dipindahkan berada di indeks ke-0 array
-//	if(pindah == angka[0])
-//	{
-//		kiri = angka[0]*-1;
-//		
-//		//indeks array setelah indeks ke-0 digeser 1 ke kiri
-//		angka[0] = angka[1];
-//		angka[1] = angka[2];
-//		angka[2] = 0;
-//	}
 
 	//menyesuaikan tanda positif/negatif angka saat dipindahkan ke kiri persamaan
 	kiri = angka[1]*-1;
@@ -70,41 +37,39 @@ int main()
 	{
 		angka[i] = angka[i]/kiri;
 	}
-		
-	//untuk debugging
-//	printf("angka di kiri: %f\n", kiri);
-//	printf("persamaan sekarang: ");
-//	for(i=0;i<2;i++)
-//	{
-//		printf("%f", angka[i]);
-//	}
 	
 	angka[1] = angka[1]*-1;
 	
 	char lanjut = 'y'; //variabel menyimpan pilihan user untuk melanjutkan perhitungan atau tidak
-	int iterasi = 0;
-	float error_true;
+	float error_true; //variabel menyimpan nilai perhitungan error true
+	float error_approx; //variabel menyimpan nilai perhitungan error aproksimasi
+	i = 1;
 	
 	while(lanjut != 'n')
 	{
-		jawaban = (angka[0] * (x0 * x0)) - angka[1];
+		jawaban = (angka[0] * (x0 * x0)) - angka[1]; //mencari akar persamaan
 		
-		//printf("%f x %f - %f\n", angka[0], pow(x0, 2), angka[1]);
-		printf("X%d = %f\n", i+1, jawaban);
+		printf("X%d = %f\n", i, jawaban);
+		i++;
+		
+		//mencari error true
 		error_true = ((sebenarnya * 1.0) - jawaban) / sebenarnya;
 		if(error_true < 0)
 		{
-			error_true = error_true * -1;
+			error_true = error_true * -1; //error true dibuat selalu bernilai positif
 		}
 		printf("error true: %f\n", error_true*100);
-//		if(iterasi > 0)
-//		{
-//			
-//		}
-		x0 = jawaban;
-		//iterasi++;
-		//printf("nilai x0 sekarang: %f\n", x0);
 		
+		//mencari error aproksimasi
+		error_approx = (jawaban - x0) / jawaban;
+		if(error_approx < 0)
+		{
+			error_approx = error_approx * -1; //error aproksimasi dibuat selalu bernilai positif
+		}
+		printf("error aproksimasi: %f\n", error_approx*100);
+		
+		x0 = jawaban; //menyalin hasil perhitungan untuk dimasukkan ke rumus jika pencarian akar dilanjutkan
+				
 		getchar();
 		
 		printf("lanjut? y/n: ");
